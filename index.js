@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv').config();
-const port = process.env.port || 5000;
+const port = process.env.PORT;
 const db = require('./models');
 const cors = require('cors');
 const morgan = require("morgan")
@@ -27,6 +27,9 @@ app.use(session({
     expires: 60 * 60 * 1000
    } 
 }))
+app.get("/" , (req,res) => {
+    res.send("Hello")
+})
 
 const userRoutes = require('./routes/UserRoute.js')
 app.use('/user' , userRoutes)
@@ -57,7 +60,7 @@ const historyRoutes = require('./routes/historyRoute.js')
 app.use('/history' , historyRoutes)
 
 db.sequelize.sync().then(() => {
-    app.listen(port , () => {
+    app.listen(PORT , () => {
         console.log(`Listening on port ${port}`);
     })
 })

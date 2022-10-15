@@ -4,8 +4,7 @@ const bcrypt = require('bcrypt');
 const route = express.Router();
 const dotenv = require('dotenv')
 const {sign} = require('jsonwebtoken');
-const jwt = require('jsonwebtoken');
-const Cryptojs = require('crypto-js')
+
 
 dotenv.config()
 const {
